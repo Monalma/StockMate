@@ -1,0 +1,772 @@
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #F0FFEF;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color:#F0FFEF
+    ;}
+
+    #customers tr:nth-child(odd){background-color:#F0FFEF
+      ;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  body {
+    font-family: Skia;
+    
+    color: #464646;
+}
+
+.stocksSignUp {
+  background-size: 100%;
+  background-image: url("background.jpeg");
+}
+
+.stock_text {
+  color: black;
+  font-size: 50px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.logo > img:nth-child(1) {
+    width: 45%;
+    margin: auto;
+}
+
+.logo_nav {
+    width: 88%;
+    /*! float: left; */
+}
+
+.email_check, .phone_check, pass_check, .pass_weak {
+    text-align: left;
+    margin-left: 28%;
+    margin-bottom: 18px;
+    margin-top: -14px;
+    color: red;
+    font-size: 14px;
+}
+
+
+
+.su_txt_box.name {
+    width: 21%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.logo {
+    margin: auto;
+    margin-top: 8%;
+    margin-bottom: none;
+    padding-bottom: none;
+    display: flex;
+    align-content: end;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.li_txt_box, .su_txt_box {
+    width: 47%;
+    border-radius: 9px;
+    height: 34px;
+    border: 4px;
+    border: 1.5px solid #ecececa3;
+    padding-left: 16px;
+    background-color: #ececec93;
+    margin: auto;
+    margin-bottom: 21px;
+}
+
+.product_page_txt_box{
+
+    width: 47%;
+    border-radius: 9px;
+    height: 34px;
+    border: 4px;
+    border: 1.5px solid #ecececa3;
+    margin-left: 30px;
+    background-color: #ffffff;
+    margin: auto;
+    margin-bottom: 21px;
+    margin-left: 2%;
+    border: solid lightgray;
+    display: inline;
+}
+
+.sml_prd_txt_box {
+    width: 160px;
+}
+
+.product_page_txt_box:focus {
+    outline: none;
+}
+
+.desc {
+    height: 200px;
+}
+
+.desc::placeholder {
+    text-align: center;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    border: 3px solid lightgray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.back > div:nth-child(1) {
+    width: 33%;
+    height: auto;
+    margin: auto;
+    margin-top: 0;
+    display: grid;
+    align-content: baseline;
+    padding: ;
+    background-color: white;
+    border-radius: 24px;
+    border-radius: 32px;
+    box-shadow: 12px 12px 35px #d7e0ed, -12px -12px 35px #f7ffff;
+    max-height: 100%;
+}
+
+
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+#password {
+    width: 47%;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.back > div:nth-child(1) > div:nth-child(3) {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+body {
+    height: 100%;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.back {
+    height: 100vh;
+    width: 100vw;
+    padding: ;
+    padding-top: 8%;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.back > div:nth-child(1) > div:nth-child(3) > button:nth-child(1) {
+    width: 47%;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 8px;
+    font-size: inherit;
+}
+
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+
+.li_su_box {
+    width: 33%;
+    height: auto;
+    margin: auto;
+    margin-top: 0;
+    display: grid;
+    align-content: baseline;
+    padding: ;
+    background-color: transparent;
+    border-radius: 24px;
+    border-radius: 32px;
+    max-height: 100%;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.logo > img:nth-child(1) {
+    width: 45%;
+    margin: auto;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.logo {
+    margin: auto;
+    margin-top: 8%;
+    margin-bottom: 15%;
+    display: flex;
+    align-content: end;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+#userName {
+    width: 47%;
+    border-radius: 9px;
+    height: 34px;
+    border: 4px;
+    border: 1.5px solid #ecececa3;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.login_txt {
+    text-align: center;
+    display: grid;
+    /*! align-content: center; */
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.back > div:nth-child(1) > div:nth-child(3) {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+body {
+    height: 100%;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.back {
+    /* background-color: # .back > div:nth-child(1) { width: 39% height: 40% margin: auto margin-top: 20% display: grid align-content: baseline } .logo > img:nth-child(1) { width: 45% margin: auto } .back { height: 100vh width: 100vw } .logo { margin: auto margin-top: 8% margin-bottom: 15% display: flex align-content: end } #userName { width: 40% } #password { width: 40% margin: margin-top: 20px } .login_txt { text-align: center } .back > div:nth-child(1) > div:nth-child(3) { text-align: center margin-top: 10% margin-bottom: 10% }; */
+    height: 100vh;
+    width: 100vw;
+    background-color: #E7F1FF;
+    padding-top: 8%;
+}
+
+/* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
+
+.back > div:nth-child(1) > div:nth-child(3) > button:nth-child(1) {
+    width: 47%;
+    height: 40px;
+    background-color: #74a3e3;
+    border-radius: 8px;
+    color: white;
+    font-size: inherit;
+    border: 1.5px solid #74a3e3;
+    cursor: pointer;
+}
+
+.si_txt {
+    text-align: left;
+    margin-left: 27%;
+    margin-bottom: 21px;
+    color: #757575;
+    font-size: 30px;
+}
+
+/* Inline #2 | http://localhost:8080/SimpleSell_war/JspPages/Products.jsp */
+
+.nav_bar {
+    display: flex;
+}
+
+.nav_logo {
+    width: 14%;
+}
+
+.right_nav {
+    display: block ruby;
+    display: -webkit-inline-box;
+    font-size: 26px;
+    margin-top: 5px;
+    margin-right: 14px;
+}
+
+.nav_bar {
+    display: flex;
+    padding: 5px;
+    box-shadow: bisque;
+}
+
+
+/* Inline #2 | http://localhost:8080/SimpleSell_war/JspPages/Products.jsp */
+
+.side_bar {
+    display: grid;
+    width: 11%;
+}
+
+.side_bar_item {
+    height: 26px;
+    margin-left: 10%;
+    padding: ;
+    padding-top: 10;
+    padding-left: 14;
+}
+
+.content {
+    background-color: #f0f0f0;
+    min-height: 120vh;
+}
+
+.content_main_out {
+
+    height: 100%;
+    width: 87%;
+    float: right;
+    border-left: solid 1px #ccc;
+}
+
+.content {
+    padding: ;
+    padding-top: 22px;
+}
+
+.side_bar {
+    float: left;
+}
+
+.selected_nav_item {
+    background-color: #d7d7d7;
+    border-radius: 10px;
+    border-left: solid 13px #82ace6;
+    margin-left: 5%;
+}
+
+.product_text {
+    margin-left: 2%;
+    color:#606060;
+}
+
+.prd_title {
+    color: #85AEE5;
+}
+
+.product_btns, .order_btns {
+    margin-left: auto;
+    width: 21%;
+    height: 40px;
+
+
+    background-color: #74a3e3;
+    border-radius: 8px;
+    color: white;
+    font-size: inherit;
+    border: 1.5px solid #74a3e3;
+    text-align: center;
+    margin-right: auto;
+    /*! transform: translate(0, 79%); */
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.product_btns:hover {
+    background-color:#2978e7 ;
+    color: white;
+}
+
+.all_products {
+    display: grid;
+    /*! width: 98; */
+    /*! grid-gap: 112; */
+    /*! height: 100vh; */
+}
+
+.cancel_btn {
+    background-color: white;
+    color: black;
+    margin-left: 35%;
+}
+
+.cancel_btn:hover{
+    background-color: rgb(241, 62, 62);
+}
+
+.prod_wrapper {
+    /*! padding-top: 2%; */
+    margin-left: 2%;
+    /*! display:grid; */
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 8px;
+    width: 96%;
+    margin-bottom: 2%;
+    min-height: 300px;
+}
+
+.inv_img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-left: 3%;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    margin-top: 2%;
+    height: wid;
+}
+
+.prod_title, .prod_title_price, .prod_cat {
+    text-align:justify;
+    /*! margin-left: 2%; */
+    display: inline;
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding-left: 1%;
+    /*! padding-right: 1%; */
+    height: 100%;
+    width: 100%;
+}
+.title_price {
+    display: flex;
+    height: 89%;
+    /*! width: 36%; */
+    /*! margin-left: 15%; */
+    margin-bottom: ;
+}
+.product_price {
+    display: flex;
+    margin-left: 10%;
+    float: right;
+}
+
+.product_content {
+    display: flex;
+    height: 100%;
+}
+
+.product_txt {
+    width: 49%;
+    display: grid;
+    padding-top: 3%;
+    margin-left: 5%;
+}
+
+
+
+.price_dollar {
+    font-size: 37;
+}
+
+
+
+.product_price {
+    display: flex;
+    margin-left: 10%;
+    float: right;
+}
+.prd_desc {
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 29px;
+    padding-left: 1%;
+    padding-right: 1%;
+    min-height: 190;
+    resize: none;
+    margin-bottom: 4%;
+}
+
+.price {
+    margin-left: 10%;
+}
+
+
+.prod_right {
+    display: grid;
+    margin-left: 4%;
+    text-align: center;
+    width: 28%;
+}
+
+.prod_id {
+    margin-top: 17%;
+    font-size: larger;
+    font-weight: 550;
+}
+
+.sold_out, .in_stock {
+    width: 75%;
+}
+
+.delete_prod {
+    width: 75%;
+    background-color: #b75656;
+}
+
+.save_mod_prod {
+    height: 50px;
+    background: #659165;
+}
+
+
+.prod_cat {
+    height: 35;
+}
+
+
+/* Inline #5 | http://localhost:63342/SimpleSell/target/SimpleSell-1.0-SNAPSHOT/JspPages/Orders.html?_ijt=9fn2cb58ndolhujbg0r4ifdeso */
+
+.order_prod_wrapper {
+    display: flex;
+}
+
+.order_prod_details {
+    display: grid;
+}
+
+.order_image {
+    /* height: 1450\[; */
+    height: 194;
+}
+
+.all_orders {
+    text-align: center;
+    width: 78%;
+    margin-left: 11%;
+    /*! background-color: white; */
+}
+
+.order_image {
+    margin-right: 12%;
+    margin-left: 5%;
+}
+
+.order_prod_name {
+    font-size: 24px;
+    padding-top: 57;
+    margin-right: 32%;
+}
+
+.order_prod_details {
+    height: min-content;
+    margin-top: 48px;
+    font-size: 20px;
+}
+
+.order_prod_name {
+    /* margin-right: 32%; */
+    margin-right: 31%;
+}
+
+.order_prod_price {
+    margin-bottom: 21px;
+}
+
+.err {
+    background-color: #f4d2d294;
+    border: 1.5px solid #e10000a3;
+}
+
+.order_prod_details {
+    /* font-size: 20px; */
+    font-size: 22px;
+    font-weight: 450;
+}
+
+.order_prod_name {
+    font-weight: 500;
+}
+
+.order_prod_wrapper {
+    margin-bottom: 34px;
+}
+
+.order_bottom {
+    display: flex;
+}
+
+
+.order_bts {
+    display: flex;
+}
+
+.order_bottom {
+}
+.order_buyer_details {
+    margin-left: 35%;
+    margin-right: 18%;
+    font-size: 21;
+    line-height: 1.5;
+    font-weight: 500;
+    display: grid;
+}
+
+.all_orders {
+    /* text-align: center; */
+    text-align: left;
+}
+.complete_order.order_btns {
+    width: 85%;
+}
+
+.accept_order.order_btns {
+    width: 40%;
+    /*! margin-right: -1%; */
+    margin-left: 5%;
+}
+
+.order_btns_wrapper {
+    width: 30%;
+    margin: auto;
+}
+
+.decline_order.order_btns {
+    width: 40%;
+    margin-right: 5%;
+    margin-left: 5%;
+    background: #cc6c6c;
+}
+
+.order_wrapper {
+    border: solid 1px #b9b9b9;
+    border-radius: 32px;
+    background: white;
+    padding: 10px;
+    padding-bottom: 34px;
+    margin-bottom: 40px;
+}
+
+.in_page_icon {
+    margin-left: 2%;
+    float: left;
+    margin-right: 0.5%;
+    margin-top: 0.45%;
+}
+
+.order_id {
+    font-size: 25px;
+}
+
+.units_sold {
+    font-size: 21;
+    font-weight: 501;
+}
+
+#li_but {
+  width: 17%;
+  height: 40px;
+  background-color: #4ED66C;
+  border-radius: 8px;
+  color: white;
+  font-size: inherit;
+  border: 1.5px solid #74a3e3;
+  cursor: pointer;
+  margin-left: 26%;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+
+
+#su_but {
+    
+
+  width: 47%;
+  height: 40px;
+  background-color: #4ED66C;
+  border-radius: 8px;
+  color: white;
+  font-size: inherit;
+  border: 1.5px solid #74a3e3;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.stock_login_btn {
+  width: 17%;
+    height: 40px;
+    background-color: #74a3e3;
+    border-radius: 8px;
+    color: white;
+    font-size: inherit;
+    border: 1.5px solid #74a3e3;
+    cursor: pointer;
+    margin-left: 26%;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.add_title {
+    display: flex;
+    margin-bottom: 52px;
+}
+
+.add_new_prod {
+    float: right;
+    margin-left: 80%;
+    font-size: 59;
+    color: #7ea2de;
+}
