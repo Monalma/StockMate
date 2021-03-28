@@ -1,54 +1,55 @@
 #customers {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F0FFEF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 90%;
+    text-align: center;
   }
   
   #customers td, #customers th {
-    border: 1px solid #F0FFEF;
+    border-bottom: 1px solid #F0FFEF;
+    border-top: 1px solid #F0FFEF;
     padding: 8px;
+    text-align: center;
   }
-  
-  #customers tr:nth-child(even){background-color:#F0FFEF
-    ;}
-
-    #customers tr:nth-child(odd){background-color:#F0FFEF
-      ;}
   
   #customers tr:hover {background-color: #ddd;}
   
   #customers th {
+    text-align: center;
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #4CAF50;
     color: white;
   }
 
-  body {
-    font-family: Skia;
-    
+body {
+    font-family: sans-serif;
     color: #464646;
 }
 
 .stocksSignUp {
-  background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: url("background.jpeg");
+  
 }
 
 .stock_text {
   color: black;
   font-size: 50px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: monospace;
 }
 
 
 /* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
 
-.logo > img:nth-child(1) {
+/* .logo > img:nth-child(1) {
     width: 45%;
     margin: auto;
-}
+} */
 
 .logo_nav {
     width: 88%;
@@ -75,12 +76,8 @@
 /* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
 
 .logo {
-    margin: auto;
-    margin-top: 8%;
-    margin-bottom: none;
-    padding-bottom: none;
-    display: flex;
     align-content: end;
+    position: relative;
 }
 
 /* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
@@ -88,13 +85,14 @@
 .li_txt_box, .su_txt_box {
     width: 47%;
     border-radius: 9px;
-    height: 34px;
+    height: 40px;
     border: 4px;
     border: 1.5px solid #ecececa3;
     padding-left: 16px;
     background-color: #ececec93;
     margin: auto;
-    margin-bottom: 21px;
+    margin-bottom: 20px;
+    font-size: 15px;
 }
 
 .product_page_txt_box{
@@ -217,15 +215,23 @@ body {
 /* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
 
 
-.li_su_box {
+.li_box {
     width: 33%;
     height: auto;
     margin: auto;
-    margin-top: 0;
+    padding-top: 10%;
     display: grid;
-    align-content: baseline;
-    padding: ;
-    background-color: transparent;
+    border-radius: 24px;
+    border-radius: 32px;
+    max-height: 100%;
+}
+
+.su_box {
+    width: 33%;
+    height: auto;
+    margin: auto;
+    padding-top: 5%;
+    display: grid;
     border-radius: 24px;
     border-radius: 32px;
     max-height: 100%;
@@ -242,8 +248,8 @@ body {
 
 .logo {
     margin: auto;
-    margin-top: 8%;
-    margin-bottom: 15%;
+    margin-top: 12%;
+    margin-bottom: 3%;
     display: flex;
     align-content: end;
 }
@@ -266,7 +272,6 @@ body {
 .login_txt {
     text-align: center;
     display: grid;
-    /*! align-content: center; */
 }
 
 /* Element | http://localhost:63342/SimpleTest/SignUp.html?_ijt=s0fvrrsn61sqkf05ghdt7fge39 */
@@ -694,49 +699,31 @@ body {
     font-weight: 501;
 }
 
-#li_but {
-  width: 17%;
-  height: 40px;
-  background-color: #4ED66C;
-  border-radius: 8px;
-  color: white;
-  font-size: inherit;
-  border: 1.5px solid #74a3e3;
-  cursor: pointer;
-  margin-left: 26%;
-  margin-right: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+lgn-btn {
+    color:white
 }
 
-
-
-#su_but {
-    
-
+#li_but {
+  outline: 0;
+  color: white;
   width: 47%;
   height: 40px;
   background-color: #4ED66C;
   border-radius: 8px;
-  color: white;
-  font-size: inherit;
-  border: 1.5px solid #74a3e3;
+  margin-bottom: 6%;
+  font-size: 18px;
+  border: none;
   cursor: pointer;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  position: relative;
+  top: 33%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
 }
+
+
 
 .stock_login_btn {
   width: 17%;
