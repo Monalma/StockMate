@@ -1,0 +1,25 @@
+<html>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Log In</title>
+      <link rel="stylesheet" href="/static/styles.css">
+  </head>
+<body class="stocksSignUp">
+    <form action = "http://localhost:5000/login" method = "post">    
+    <div class="li_box">
+        <div class="logo">
+            <h1 class="stock_text">$tockMate</h1>
+        </div>
+        <div class="login_txt">
+            <input class="li_txt_box" id="email" name = "email" type="text" placeholder="Username">
+            <input class="li_txt_box" id="password" name = "password"type="password" placeholder="Password">
+            <button type = "submit" value = "Submit" id="li_but"><a style="color: white; text-decoration: none;">Log in</a></button>
+            <section class = "already-link"><a href="http://localhost:5000/signup">New to StockMate? Sign Up.</a></section>
+        </div>
+    </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="/static/styles.css">
+    
+    </head>
+   <body  class="stocksSignUp">
+      <form action = "http://localhost:5000/login" method = "post">
+        <div>
+            <div class="su_box">
+                <div class="logo login">
+                    <h1 class="stock_text">$tockMate</h1>
+                </div>
+                <div class="login_txt">
+                    <div class="name_box">
+                    <input class="su_txt_box name" id="firstName" type="text" name="firstName" placeholder="First Name">
+                    <input class="su_txt_box name" id="lastName" type="text" name="lastName" placeholder="Last Name">
+                    </div>
+                    <input class="su_txt_box" id="email" type="text" placeholder="Email ID">
+            <input class="su_txt_box" id="password" type="password" placeholder="Password">
+            <input class="su_txt_box" id="re-password" type="password" placeholder="Re-type Password">
+                </div>
+            </div>
+        </div>
+            <p>Username:</p>
+         
+
+         <p><input type = "submit" value = "submit" /></p>
+      </form>
+   </body>
+</html> -->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/static/styles.css">
+
+</head>
+<body class="stocksSignUp">
+<form action = "http://localhost:5000/signup" method = "post">    
+<div>
+    <div class="su_box">
+        <div class="logo login">
+            <h1 class="stock_text">$tockMate</h1>
+        </div>
+
+        <div class="login_txt">
+        
+            <div class="name_box">
+            <input class="su_txt_box name" id="firstName" type="text" name="firstName" placeholder="First Name">
+            <input class="su_txt_box name" id="lastName" type="text" name="lastName" placeholder="Last Name">
+            </div>
+            <input class="su_txt_box" id="email" type="text" placeholder="Email ID">
+            <input class="su_txt_box" id="password" type="password" placeholder="Password">
+            <input class="su_txt_box" id="re-password" type="password" placeholder="Re-type Password">
+            <button type = "submit" value = "Submit" id="li_but"><a style="color: white; text-decoration: none;">Sign up!</button>
+            <section class="already"><a href="http://localhost:5000/login">Already registed? Sign In.</a></section>
+        </div>
+      
+    </div>
+</div>
+
+</form>
+</body>
+
+</html>
