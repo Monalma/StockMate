@@ -32,8 +32,8 @@ def signup():
       print(query)
       cursor.execute(query)
       cnx.commit()
-      cursor.close()
-      cnx.close()
+      # cursor.close()
+      # cnx.close()
       return redirect(url_for('dashboard',a = firstName, b = lastName))
    if request.method == 'GET':
       firstName = request.args.get('firstName')
@@ -45,7 +45,12 @@ def login():
    if request.method == 'POST':
       email = request.form['email']
       password = request.form['password']
-      return redirect(url_for('dashboard',a = email, b = password))
+      query = "SELECT COUNT(*) FROM user U WHERE U.emailID ='" + email + "' AND U.password ='" + password + "';"
+      cursor.execute(query)
+      result = cursor.fetchall()
+      print((result[0])[0])
+      if (result[0])[0] == 1:
+         return redirect(url_for('dashboard',a = email, b = password))
    if request.method == 'GET':
       email = request.args.get('email')
       password = request.args.get('password')
