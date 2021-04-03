@@ -51,6 +51,10 @@ def login():
       print((result[0])[0])
       if (result[0])[0] == 1:
          return redirect(url_for('dashboard',a = email, b = password))
+      else:
+         print("Wrong User Name or Password!\n")
+         return render_template('login.html')
+
    if request.method == 'GET':
       email = request.args.get('email')
       password = request.args.get('password')
