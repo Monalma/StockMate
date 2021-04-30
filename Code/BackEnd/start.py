@@ -19,7 +19,24 @@ cursor = cnx.cursor()
 
 @app.route('/dashboard/<a>/<b>')
 def dashboard(a, b):
-   return 'welcome %s %s' % (a,b)
+   if request.method == 'GET':
+      emailID = a
+      query = "select stockID, stockAmount, stockValue from userTransaction WHERE userAccountID = \""+ a +"\";"
+      print(query)
+      cursor.execute(query)
+      allInfo = cursor.fetchall()
+      table = "<html><head><meta charset=\"UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Stockmate</title><link rel=\"stylesheet\" href=\"/static/styles.css\"><title>Document</title></head><body><h1 class=\"stock_text\">Your Stocks</h1><table id=\"customers\">"
+      table += " <tr> <th> Stock ID </th> <th> Stock Amount </th>  <th> Stock Value</th> "
+      for i in allInfo:
+         stock_id = i[0]
+         stockAmount = i[1]
+         stockValue = i[2]
+         table += " <tr> <td>" + str(stock_id) + " </td> <td>" +str(stockAmount)+"</td> <td>" +str(stockValue)+ "</tr>"
+      table += "</table>"
+      table += "<br></br><h1 class=\"stock_text\">Your Lists</h1></body> </html>"
+      return table
+   # else
+   #    return 'welcome %s %s' % (a,b)
 
 @app.route('/signup',methods = ['POST', 'GET'])
 def signup():
@@ -34,7 +51,7 @@ def signup():
       cnx.commit()
       # cursor.close()
       # cnx.close()
-      return redirect(url_for('dashboard',a = firstName, b = lastName))
+      return redirect(url_for('login'))
    if request.method == 'GET':
       firstName = request.args.get('firstName')
       lastName = request.args.get('lastName')
