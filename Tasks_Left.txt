@@ -1,0 +1,10 @@
+Features to implement:
+
+Main stock page (Frontend and Backend)
+
+Adding a user transaction (Frontend and Backend)
+
+Adding a list of stocks (Frontend and Backend)
+
+Friends page (Frontend and Backend)
+
