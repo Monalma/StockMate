@@ -8,3 +8,8 @@ Adding a list of stocks (Frontend and Backend)
 
 Friends page (Frontend and Backend)
 
+Adding lists/stocks as "favorite"
+
+Viewing "Historical Trends"
+
+Viewing Top stocks that "pay highest dividend"
