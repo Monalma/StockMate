@@ -40,7 +40,6 @@ def dashboard(a):
       <a href=" """ + "http://localhost:5000/transactions/" + a + "/"  +""" ">Transactions</a>
       <a href=" """ + "http://localhost:5000/watchlists/" + a + "/" +""" ">Watch Lists</a>
       <a href=" """ + "http://localhost:5000/friends/" + a + "/" +""" ">Friends</a>
-      <a href=" """ + "http://localhost:5000/profile/" + a + "/" + """ ">Profile</a>
       <a href=" """ + "http://localhost:5000/login" + "" + """ ">Logout</a>
       <label for="chk" class="hide-menu-btn">
         <i class="fas fa-times"></i>
@@ -136,7 +135,6 @@ def stocks(a):
       <a href=" """ + "http://localhost:5000/transactions/" + a + "/"  +""" ">Transactions</a>
       <a href=" """ + "http://localhost:5000/watchlists/" + a + "/" +""" ">Watch Lists</a>
       <a href=" """ + "http://localhost:5000/friends/" + a + "/" +""" ">Friends</a>
-      <a href=" """ + "http://localhost:5000/profile/" + a + "/" + """ ">Profile</a>
       <a href=" """ + "http://localhost:5000/login" + "" + """ ">Logout</a>
       <label for="chk" class="hide-menu-btn">
         <i class="fas fa-times"></i>
@@ -182,7 +180,6 @@ def watchlists(a):
       <a href=" """ + "http://localhost:5000/transactions/" + a + "/"  +""" ">Transactions</a>
       <a href=" """ + "http://localhost:5000/watchlists/" + a + "/" +""" ">Watch Lists</a>
       <a href=" """ + "http://localhost:5000/friends/" + a + "/" +""" ">Friends</a>
-      <a href=" """ + "http://localhost:5000/profile/" + a + "/" + """ ">Profile</a>
       <a href=" """ + "http://localhost:5000/login" + "" + """ ">Logout</a>
       <label for="chk" class="hide-menu-btn">
         <i class="fas fa-times"></i>
@@ -438,7 +435,6 @@ def transactions(a):
       <a href=" """ + "http://localhost:5000/transactions/" + a + "/"  +""" ">Transactions</a>
       <a href=" """ + "http://localhost:5000/watchlists/" + a + "/" +""" ">Watch Lists</a>
       <a href=" """ + "http://localhost:5000/friends/" + a + "/" +""" ">Friends</a>
-      <a href=" """ + "http://localhost:5000/profile/" + a + "/" + """ ">Profile</a>
       <a href=" """ + "http://localhost:5000/login" + "" + """ ">Logout</a>
       <label for="chk" class="hide-menu-btn">
         <i class="fas fa-times"></i>
@@ -536,7 +532,6 @@ def friends(a):
       <a href=" """ + "http://localhost:5000/transactions/" + a + "/"  +""" ">Transactions</a>
       <a href=" """ + "http://localhost:5000/watchlists/" + a + "/" +""" ">Watch Lists</a>
       <a href=" """ + "http://localhost:5000/friends/" + a + "/" +""" ">Friends</a>
-      <a href=" """ + "http://localhost:5000/profile/" + a + "/" + """ ">Profile</a>
       <a href=" """ + "http://localhost:5000/login" + "" + """ ">Logout</a>
       <label for="chk" class="hide-menu-btn">
         <i class="fas fa-times"></i>
