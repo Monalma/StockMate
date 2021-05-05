@@ -263,5 +263,86 @@ def transactions(a):
       print(transaction)
       return redirect(url_for('transactions', a = a))
 
+@app.route('/friends/<a>/',methods = ['POST', 'GET'])
+def friends(a):
+   if request.method == 'GET':
+      table = "<html><head><meta charset=\"UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Stockmate</title><link rel=\"stylesheet\" href=\"/static/styles.css\"><title>Document</title><link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.1/css/all.css\"></head><body>"
+      table += """<div class="header">
+    <h2 class="logo">StockMate</h2>
+    <input type="checkbox" id="chk">
+    <label for="chk" class="show-menu-btn">
+      <i class="fas fa-ellipsis-h"></i>
+    </label>
+
+    <ul class="menu">
+      <a href = "http://localhost:5000/dashboard/"""+ a + """/">Dashboard</a>
+      <a href=" """ + "http://localhost:5000/stocks/" + a + "/" + """ ">Stocks</a>
+      <a href=" """ + "http://localhost:5000/transactions/" + a + "/"  +""" ">Transactions</a>
+      <a href=" """ + "http://localhost:5000/watchlists/" + a + "/" +""" ">Watch Lists</a>
+      <a href=" """ + "http://localhost:5000/friends/" + a + "/" +""" ">Friends</a>
+      <a href=" """ + "http://localhost:5000/profile/" + a + "/" + """ ">Profile</a>
+      <a href=" """ + "http://localhost:5000/login" + "" + """ ">Logout</a>
+      <label for="chk" class="hide-menu-btn">
+        <i class="fas fa-times"></i>
+      </label>
+    </ul>
+      </div><br></br>"""
+
+      query = """SELECT friendAccountID, firstName, LastName FROM userFriends JOIN user ON friendAccountID = emailID WHERE userAccountID = %s;"""
+      print(query, a)
+      cursor.execute(query, (a,))
+      allInfo = cursor.fetchall()
+      if allInfo == []:
+            table += "<h1 class=\"stock_text\">You do not have any friends on StockMate yet!</h1><br></br>"
+      else:
+         table += """<h1 class=\"stock_text\">Your Friends</h1><br></br>"""
+         table += "<table id=\"customers\">"
+         table += " <tr><th>FriendID</th><th> Name </th> <th>Net Gain/Loss</th> <th> Net Gain/Loss % </th> "
+         for i in allInfo:
+            friendAccountID = i[0]
+            firstName = i[1]
+            lastName = i[2]
+            args = (friendAccountID, (0, 'CHAR'), (0, 'CHAR'))
+            result_args = cursor.callproc('GetNetAnalytics', args)
+            perc = str((float(result_args[1])/float(result_args[2])) * 100) + "%"
+            table += " <tr><td>" + friendAccountID + "</td><td>" + str(firstName) + " " + str(lastName) + " </td> <td>" + str(result_args[1]) + "$ </td> <td>" + perc + "</tr>"
+         table += "</table><br></br>"
+      table += """<h1 class=\"stock_text\">Add a friend here</h1>"""
+      table += """<form action = "http://localhost:5000/friends/"""+ a + """/" method = "post">    
+      <div class="">
+         <div class="">
+               <input class="li_txt_box" id="friendIDAdd" name = "friendIDAdd"type="text" placeholder="friendID"><br></br>
+         </div>
+      </div>
+      """
+      table += """<h1 class=\"stock_text\">Remove a friend here</h1><br></br>"""
+      table += """<input class="li_txt_box" id="friendIDRemove" name = "friendIDRemove"type="text" placeholder="friendID"><br></br>"""
+      table += """<button type = "submit" value = "Submit" id="li_but"><a style="color: white; text-decoration: none;">Submit</a></button>"""
+      table += """</form> """
+      table += "</body> </html>"
+      friendIDAdd = request.args.get('friendIDAdd')
+      friendIDRemove = request.args.get('friendIDRemove')
+      return table
+   if request.method == 'POST':
+      friendIDAdd = request.form['friendIDAdd']
+      friendIDRemove = request.form['friendIDRemove']
+      if friendIDAdd != "":
+         print("FriendID Empty!")
+         addFriendQuery = "INSERT INTO userFriends VALUES(%s, %s);"
+         cursor.execute(addFriendQuery, (friendIDAdd, a))
+         cursor.execute(addFriendQuery, (a, friendIDAdd))
+         cnx.commit()
+
+      if friendIDRemove != "":
+         removeFriendQuery = "DELETE FROM userFriends WHERE userAccountID = %s AND friendAccountID = %s;"
+         print(removeFriendQuery, (friendIDRemove, a))
+         cursor.execute(removeFriendQuery, (friendIDRemove, a))
+         cursor.execute(removeFriendQuery, (a, friendIDRemove))
+         cnx.commit()
+      print("The trasactions details are")
+      print(friendIDAdd)
+      print(friendIDRemove)
+      return redirect(url_for('friends', a = a))
+
 if __name__ == '__main__':
    app.run(debug = True)
