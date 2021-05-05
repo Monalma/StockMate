@@ -1,7 +1,7 @@
 DELIMITER //
 CREATE PROCEDURE GetNetAnalytics(IN userID VARCHAR(30), OUT amt VARCHAR(30), OUT total VARCHAR(30))
 BEGIN
-	SELECT SUM(U.stockAmount * S.Price - U.stockAmount * U.stockValue) INTO amt FROM userTransaction U JOIN stock S ON U.stockID = `Stock ID` WHERE U.type = "1" GROUP BY U.userAccountID HAVING U.userAccountID = userID;
+	SELECT SUM(U.stockAmount * S.Price - U.stockAmount * U.stockValue) INTO amt FROM userTransaction U JOIN stock S ON U.stockID = S.stockID WHERE U.type = "1" GROUP BY U.userAccountID HAVING U.userAccountID = userID;
 	SELECT SUM(stockAmount * stockValue) INTO total FROM userTransaction WHERE userAccountID = userID;
 END //
 DELIMITER ;
@@ -9,13 +9,13 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE GetTheBestStock(IN userID VARCHAR(30), OUT stockName VARCHAR(30), OUT boughtAt VARCHAR(30), OUT priceRightNow VARCHAR(30))
 BEGIN
-	SELECT stockID INTO stockName FROM (SELECT U.stockID, SUM(U.stockAmount * S.Price - U.stockAmount * U.stockValue) AS net FROM userTransaction U JOIN stock S ON U.stockID = `Stock ID` WHERE U.type = "1" AND U.userAccountID = userID GROUP BY U.stockID ORDER BY net DESC LIMIT 1) AS SQ;
+	SELECT stockID INTO stockName FROM (SELECT U.stockID, SUM(U.stockAmount * S.Price - U.stockAmount * U.stockValue) AS net FROM userTransaction U JOIN stock S ON U.stockID = S.stockID WHERE U.type = "1" AND U.userAccountID = userID GROUP BY U.stockID ORDER BY net DESC LIMIT 1) AS SQ;
     SELECT stockValue INTO boughtAt FROM userTransaction WHERE stockID = stockName AND userAccountID = userID;
-    SELECT Price INTO priceRightNow from stock S WHERE S.`Stock ID` = stockName;
+    SELECT Price INTO priceRightNow from stock S WHERE S.stockID = stockName;
 END //
 DELIMITER ;
 
-DROP PROCEDURE [IF EXISTS] stored_procedure_name;
+DROP PROCEDURE IF EXISTS stored_procedure_name;
 
 SELECT 
   ROUTINE_SCHEMA,
