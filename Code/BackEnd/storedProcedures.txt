@@ -14,5 +14,3 @@ BEGIN
     SELECT Price INTO priceRightNow from stock S WHERE S.`Stock ID` = stockName;
 END //
 DELIMITER ;
-
-SELECT Price INTO priceRightNow from stock S WHERE S.`Stock ID` = stockName;
