@@ -59,7 +59,42 @@ def dashboard(a):
          stockValue = i[2]
          table += " <tr> <td>" + str(stock_id) + " </td> <td>" +str(stockAmount)+"</td> <td>" + "$" + str(stockValue)+ "</tr>"
       table += "</table>"
-      table += "<br></br><h1 class=\"stock_text\">Your Lists</h1>"
+      totalTables = "select listName, listID from watchList where userAccountID = %s;"
+      cursor.execute(totalTables, (a,))
+      allInfo = cursor.fetchall()
+      if allInfo == []:
+            table += "<h1 class=\"stock_text\">You have no Favourite Watch Lists, please add one!</h1><br></br>"
+      else:
+         table += "<br></br><h1 class=\"stock_text\">Your Favourite Lists</h1>"
+         totalLists = len(allInfo)
+         while totalLists > 0:
+            # print(allInfo)
+            currList = allInfo[len(allInfo) - totalLists][0]
+            tickID = allInfo[len(allInfo) - totalLists][1]
+            # currList = currList[2 : -1]
+            # tickID = tickID[2 : -1]
+            # print("TICKER ID = " + str(tickID))
+            query = """Select s.stockID, s.Price, s.lastUpdated, s.companyName, s.Exchange, w.isFav
+                        From watchList w, listedStock ls, stock s
+                        Where w.userAccountID = %s and ls.listID = w.listID and w.listID = """ + str(tickID) + """ and ls.StockID = s.stockID;"""
+            cursor.execute(query, (a,))
+            valToPutInTable = cursor.fetchall()
+            if (valToPutInTable == []):
+               totalLists -= 1
+               continue
+            if valToPutInTable[0][5] == True:
+               table += """<h1 class=\"stock_text\">""" + str(currList) + """</h1><br></br>"""
+               table += "<table id=\"watchList\">"
+               table += " <tr><th> Stock Ticker </th> <th> Price </th> <th> Last Updated </th>  <th> Company Name</th> <th> Exchange</th> "
+               for i in valToPutInTable:
+                  stock_id = i[0]
+                  stockValue = i[1]
+                  lastUpdatedVal = i[2]
+                  companyNameVal = i[3]
+                  exchangeVal = i[4]
+                  table += " <tr><td>" + str(stock_id) + " </td> <td>" + str(stockValue) + " </td> <td>" +str(lastUpdatedVal)+"</td> <td>" +str(companyNameVal)+ "</td> <td>" + str(exchangeVal)+ "</tr>"
+            table += "</table><br></br>"
+            totalLists -= 1
       table += """<h1 class=\"stock_text\">Your Statistics</h1><br></br>Total Gain/Loss: """
       
       args = (a, (0, 'CHAR'), (0, 'CHAR'))
