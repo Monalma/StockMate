@@ -22,3 +22,119 @@ SELECT
   ROUTINE_NAME
 FROM INFORMATION_SCHEMA.ROUTINES
 WHERE ROUTINE_TYPE = 'PROCEDURE';
+
+DELIMITER //
+CREATE PROCEDURE GetPrevDayPercent(IN companyID VARCHAR(30), OUT prevDayPercentage FLOAT, OUT prevWeekPercentage FLOAT, OUT prevMonthPercentage FLOAT, OUT prevYearPercentage FLOAT, OUT prevAllPercentage FLOAT)
+BEGIN
+  DECLARE currDate DATE;
+  DECLARE currPrice INT;
+  DECLARE prevDayDate DATE;
+  DECLARE prevDayPrice INT;
+  DECLARE prevWeekDate DATE;
+  DECLARE prevWeekPrice INT;
+  DECLARE prevMonthDate DATE;
+  DECLARE prevMonthPrice INT;
+  DECLARE prevYearDate DATE;
+  DECLARE prevYearPrice FLOAT;
+  DECLARE prevAllDate DATE;
+  DECLARE prevAllPrice FLOAT;
+	DECLARE companyList cursor for SELECT stockID FROM HistoricalData GROUP BY stockID;
+
+  SELECT MAX(date) INTO currDate FROM HistoricalData WHERE stockID = companyID;
+  SELECT CAST(stockValue AS FLOAT) INTO currPrice FROM HistoricalData WHERE date = currDate AND stockID = companyID;
+
+  SELECT DATE_SUB(currDate, INTERVAL 1 DAY) INTO prevDayDate;
+  SELECT CAST(stockValue AS FLOAT) INTO prevDayPrice FROM HistoricalData WHERE date = prevDayDate AND stockID = companyID;
+
+  set prevDayPercentage = (currPrice - prevDayPrice)/(prevDayPrice) * 100;
+
+
+  SELECT DATE_SUB(currDate, INTERVAL 1 WEEK) INTO prevWeekDate;
+  SELECT CAST(stockValue AS FLOAT) INTO prevWeekPrice FROM HistoricalData WHERE date = prevWeekDate AND stockID = companyID;
+
+  set prevWeekPercentage = (currPrice - prevWeekPrice)/(prevWeekPrice) * 100;
+
+  SELECT DATE_SUB(currDate, INTERVAL 1 MONTH) INTO prevMonthDate;
+  SELECT DATE_ADD(prevMonthDate, INTERVAL 1 DAY) INTO prevMonthDate;
+  SELECT CAST(stockValue AS FLOAT) INTO prevMonthPrice FROM HistoricalData WHERE date = prevMonthDate AND stockID = companyID;
+
+  set prevMonthPercentage = (currPrice - prevMonthPrice)/(prevMonthPrice) * 100;
+
+  SELECT DATE_SUB(currDate, INTERVAL 1 YEAR) INTO prevYearDate;
+  SELECT CAST(stockValue AS FLOAT) INTO prevYearPrice FROM HistoricalData WHERE date = prevYearDate AND stockID = companyID;
+
+  set prevYearPercentage = (currPrice - prevYearPrice)/(prevYearPrice) * 100;
+
+  SELECT MIN(date) INTO prevAllDate FROM HistoricalData WHERE stockID = companyID;
+  SELECT CAST(stockValue AS FLOAT) INTO prevAllPrice FROM HistoricalData WHERE date = prevAllDate AND stockID = companyID;
+
+  set prevAllPercentage = (currPrice - prevAllPrice)/(prevAllPrice) * 100;
+
+END //
+DELIMITER ;
+
+CALL GetPrevDayPercent("AAPL",@dayPercentage, @weekPercentage, @monthPercentage, @yearPercentage, @allPercentage);
+SELECT @percentage,  @weekPercentage, @monthPercentage, @yearPercentage, @allPercentage;
+
+DROP PROCEDURE IF EXISTS GetPrevDayPercent;
+
+DELIMITER //
+CREATE PROCEDURE GetPrevDayPercent(IN companyID VARCHAR(30), OUT SprevDayPercentage VARCHAR(30), OUT SprevWeekPercentage VARCHAR(30), OUT SprevMonthPercentage VARCHAR(30), OUT SprevYearPercentage VARCHAR(30), OUT SprevAllPercentage VARCHAR(30))
+BEGIN
+  DECLARE currDate DATE;
+  DECLARE currPrice INT;
+  DECLARE prevDayDate DATE;
+  DECLARE prevDayPrice INT;
+  DECLARE prevWeekDate DATE;
+  DECLARE prevWeekPrice INT;
+  DECLARE prevMonthDate DATE;
+  DECLARE prevMonthPrice INT;
+  DECLARE prevYearDate DATE;
+  DECLARE prevYearPrice FLOAT;
+  DECLARE prevAllDate DATE;
+  DECLARE prevAllPrice FLOAT;
+	DECLARE companyList cursor for SELECT stockID FROM HistoricalData GROUP BY stockID;
+  DECLARE prevDayPercentage FLOAT;
+  DECLARE prevWeekPercentage FLOAT;
+  DECLARE prevMonthPercentage FLOAT;
+  DECLARE prevYearPercentage FLOAT;
+  DECLARE prevAllPercentage FLOAT;
+
+  SELECT MAX(date) INTO currDate FROM HistoricalData WHERE stockID = companyID;
+  SELECT CAST(stockValue AS FLOAT) INTO currPrice FROM HistoricalData WHERE date = currDate AND stockID = companyID;
+
+  SELECT DATE_SUB(currDate, INTERVAL 1 DAY) INTO prevDayDate;
+  SELECT CAST(stockValue AS FLOAT) INTO prevDayPrice FROM HistoricalData WHERE date = prevDayDate AND stockID = companyID;
+
+  set prevDayPercentage = (currPrice - prevDayPrice)/(prevDayPrice) * 100;
+
+
+  SELECT DATE_SUB(currDate, INTERVAL 1 WEEK) INTO prevWeekDate;
+  SELECT CAST(stockValue AS FLOAT) INTO prevWeekPrice FROM HistoricalData WHERE date = prevWeekDate AND stockID = companyID;
+
+  set prevWeekPercentage = (currPrice - prevWeekPrice)/(prevWeekPrice) * 100;
+
+  SELECT DATE_SUB(currDate, INTERVAL 1 MONTH) INTO prevMonthDate;
+  SELECT DATE_ADD(prevMonthDate, INTERVAL 1 DAY) INTO prevMonthDate;
+  SELECT CAST(stockValue AS FLOAT) INTO prevMonthPrice FROM HistoricalData WHERE date = prevMonthDate AND stockID = companyID;
+
+  set prevMonthPercentage = (currPrice - prevMonthPrice)/(prevMonthPrice) * 100;
+
+  SELECT DATE_SUB(currDate, INTERVAL 1 YEAR) INTO prevYearDate;
+  SELECT CAST(stockValue AS FLOAT) INTO prevYearPrice FROM HistoricalData WHERE date = prevYearDate AND stockID = companyID;
+
+  set prevYearPercentage = (currPrice - prevYearPrice)/(prevYearPrice) * 100;
+
+  SELECT MIN(date) INTO prevAllDate FROM HistoricalData WHERE stockID = companyID;
+  SELECT CAST(stockValue AS FLOAT) INTO prevAllPrice FROM HistoricalData WHERE date = prevAllDate AND stockID = companyID;
+
+  set prevAllPercentage = (currPrice - prevAllPrice)/(prevAllPrice) * 100;
+
+  SELECT CAST(prevDayPercentage AS VARCHAR(50)) INTO SprevDayPercentage;
+  SELECT CAST(prevDayPercentage AS VARCHAR(50)) INTO SprevWeekPercentage;
+  SELECT CAST(prevDayPercentage AS VARCHAR(50)) INTO SprevMonthPercentage;
+  SELECT CAST(prevDayPercentage AS VARCHAR(50)) INTO SprevYearPercentage;
+  SELECT CAST(prevDayPercentage AS VARCHAR(50)) INTO SprevAllPercentage;
+
+END //
+DELIMITER ;

@@ -176,26 +176,50 @@ def stocks(a):
       </label>
     </ul>
   </div><br></br>"""
+   # table += """<h1 class=\"stock_text\">Trending Stocks</h1><br></br>"""
+   # cursor.execute("SELECT * FROM stock ORDER BY Price LIMIT 0 , 30")
+
+   # allInfo = cursor.fetchall()
+
+   # for i in allInfo:
+   #    print(i)
+
+   # table += "<table id=\"customers\">"
+   # table += " <tr> <th> Stock ID </th> <th> Price </th>  <th> Company</th> <th> Trade</th><th> Last Updated</th></th>"
+   # for i in allInfo:
+   #    stock_id = i[0]
+   #    stock_price = i[1]
+   #    company = i[2]
+   #    trade = i[3]
+   #    last_updated = i[4]
+   #    table += " <tr> <td>" + str(stock_id) + " </td> <td>" +str(stock_price)+"</td> <td>" +str(company)+ "</td> <td>" +str(trade)+ "</td> <td>" + str(last_updated) +"</td> </tr>"
+
+
+
+   # table += "</table>"
+   table += """<h1 class=\"stock_text\">Stock Statistics</h1><br></br>"""
+   table += " <tr> <th> Stock ID </th> <th> Weekly Change </th>  <th> Monthly Change</th> <th> Yearly Change </th><th> All Time Change</th></tr>"
+
+   companyQuery = "SELECT stockID FROM HistoricalData GROUP BY stockID;"
+   cursor.execute(companyQuery)
+   bestDaily = 0
+   bestDailyStock = ""
+   bestWeekly = 0
+   bestWeeklyStock = ""
+   bestMont = 0
+   bestYearly = 0
+   bestAlltime = 0
+
+   companyResult = cursor.fetchall()
+   for i in companyResult:
+      stockName = i[0]
+      args = (stockName, (0, 'CHAR'), (0, 'CHAR'), (0, 'CHAR'), (0, 'CHAR'), (0, 'CHAR'))
+      result_args = cursor.callproc('GetPrevDayPercent', args)
+      print(result_args)
    table += """<h1 class=\"stock_text\">Trending Stocks</h1><br></br>"""
-   cursor.execute("SELECT * FROM stock ORDER BY Price LIMIT 0 , 30")
-
-   allInfo = cursor.fetchall()
-
-   for i in allInfo:
-      print(i)
-
-   table += "<table id=\"customers\">"
-   table += " <tr> <th> Stock ID </th> <th> Price </th>  <th> Company</th> <th> Trade</th><th> Last Updated</th></th>"
-   for i in allInfo:
-      stock_id = i[0]
-      stock_price = i[1]
-      company = i[2]
-      trade = i[3]
-      last_updated = i[4]
-      table += " <tr> <td>" + str(stock_id) + " </td> <td>" +str(stock_price)+"</td> <td>" +str(company)+ "</td> <td>" +str(trade)+ "</td> <td>" + str(last_updated) +"</td> </tr>"
 
 
-   table += "</table></body> </html>"
+   table += "</body> </html>"
    return table
 
 @app.route('/watchlists/<a>/', methods = ['POST', 'GET'])
