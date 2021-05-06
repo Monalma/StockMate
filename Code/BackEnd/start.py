@@ -573,7 +573,46 @@ def friends(a):
       </label>
     </ul>
       </div><br></br>"""
-
+      table += """<h1 class=\"stock_text\">Your Friends public lists</h1><br></br>"""
+      totalTables = """select uf.friendAccountID, u.firstName, w.listID, w.listName 
+                        from userFriends uf, user u, watchList w 
+                        where uf.userAccountID = %s and u.emailID = uf.friendAccountID and w.userAccountID = u.emailID;"""
+      cursor.execute(totalTables, (a,))
+      allInfo = cursor.fetchall()
+      print(allInfo)
+      if allInfo == []:
+            table += "<h1 class=\"stock_text\">You have no Favourite Watch Lists, please add one!</h1><br></br>"
+      else:
+         # table += "<br></br><h1 class=\"stock_text\">Your Favourite Lists</h1>"
+         totalLists = len(allInfo)
+         while totalLists > 0:
+            currList = allInfo[len(allInfo) - totalLists][3]
+            tickID = allInfo[len(allInfo) - totalLists][2]
+            accountEmail = allInfo[len(allInfo) - totalLists][0]
+            accountName = allInfo[len(allInfo) - totalLists][1]
+            print("TICKY" + str(accountEmail))
+            query = """Select s.stockID, s.Price, s.lastUpdated, s.companyName, s.Exchange, w.isPublic
+                        From watchList w, listedStock ls, stock s
+                        Where ls.listID = w.listID and w.listID = """ + str(tickID) + """ and ls.StockID = s.stockID;"""
+            cursor.execute(query)
+            valToPutInTable = cursor.fetchall()
+            print(valToPutInTable)
+            if (valToPutInTable == []):
+               totalLists -= 1
+               continue
+            if valToPutInTable[0][5] == 1:
+               table += """<h1 class=\"stock_text\">""" + str(accountName) + '\'s ' + str(currList) + """</h1><br></br>"""
+               table += "<table id=\"watchList\">"
+               table += " <tr><th> Stock Ticker </th> <th> Price </th> <th> Last Updated </th>  <th> Company Name</th> <th> Exchange</th> "
+               for i in valToPutInTable:
+                  stock_id = i[0]
+                  stockValue = i[1]
+                  lastUpdatedVal = i[2]
+                  companyNameVal = i[3]
+                  exchangeVal = i[4]
+                  table += " <tr><td>" + str(stock_id) + " </td> <td>" + str(stockValue) + " </td> <td>" +str(lastUpdatedVal)+"</td> <td>" +str(companyNameVal)+ "</td> <td>" + str(exchangeVal)+ "</tr>"
+            table += "</table><br></br>"
+            totalLists -= 1
       query = """SELECT friendAccountID, firstName, LastName FROM userFriends JOIN user ON friendAccountID = emailID WHERE userAccountID = %s;"""
       print(query, a)
       cursor.execute(query, (a,))
@@ -597,12 +636,33 @@ def friends(a):
       table += """<form action = "http://localhost:5000/friends/"""+ a + """/" method = "post">    
       <div class="">
          <div class="">
-               <input class="li_txt_box" id="friendIDAdd" name = "friendIDAdd"type="text" placeholder="friendID"><br></br>
+               """
+      query = """select u.emailID from user u where u.emailID not in (select friendAccountID from userFriends where userAccountID = %s) and u.emailID <> %s"""
+      cursor.execute(query, (a,a))
+      allUsers = cursor.fetchall()
+      table += """
+               <select class="li_txt_box" id="friendIDAdd" name = "friendIDAdd" > 
+               <option value="unknown">Please select a friend you'd like to add</option>
+               """
+      for i in allUsers:
+         print(i)
+         table += """<option value =\"""" + i[0] + "\">" + i[0] + "</option>"
+      table += """</select><br></br>
          </div>
       </div>
       """
       table += """<h1 class=\"stock_text\">Remove a friend here</h1><br></br>"""
-      table += """<input class="li_txt_box" id="friendIDRemove" name = "friendIDRemove"type="text" placeholder="friendID"><br></br>"""
+      query = """select friendAccountID from userFriends where userAccountID = %s"""
+      cursor.execute(query, (a,))
+      allUsers = cursor.fetchall()
+      table += """
+               <select class="li_txt_box" id="friendIDRemove" name = "friendIDRemove" > 
+               <option value="unknown">Please select a friend you'd like to remove</option>
+               """
+      for i in allUsers:
+         print(i)
+         table += """<option value =\"""" + i[0] + "\">" + i[0] + "</option>"
+      table += """</select><br></br>"""
       table += """<button type = "submit" value = "Submit" id="li_but"><a style="color: white; text-decoration: none;">Submit</a></button>"""
       table += """</form> """
       table += "</body> </html>"
@@ -612,14 +672,14 @@ def friends(a):
    if request.method == 'POST':
       friendIDAdd = request.form['friendIDAdd']
       friendIDRemove = request.form['friendIDRemove']
-      if friendIDAdd != "":
+      if friendIDAdd != "unknown":
          print("FriendID Empty!")
          addFriendQuery = "INSERT INTO userFriends VALUES(%s, %s);"
          cursor.execute(addFriendQuery, (friendIDAdd, a))
          cursor.execute(addFriendQuery, (a, friendIDAdd))
          cnx.commit()
 
-      if friendIDRemove != "":
+      if friendIDRemove != "unknown":
          removeFriendQuery = "DELETE FROM userFriends WHERE userAccountID = %s AND friendAccountID = %s;"
          print(removeFriendQuery, (friendIDRemove, a))
          cursor.execute(removeFriendQuery, (friendIDRemove, a))
