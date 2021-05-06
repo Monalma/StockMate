@@ -11,6 +11,10 @@ Login:
 
 SELECT COUNT(*) FROM user U WHERE U.emailID = %s AND U.password = %s;
 
+Signup:
+
+INSERT INTO user (emailID, firstName, lastName, password) VALUES (%s, %s, %s, %s);
+
 Stocks:
 
 select stockID, stockAmount, stockValue from userTransaction WHERE userAccountID = %s;
@@ -28,11 +32,15 @@ SELECT `stockID` FROM stock LIMIT 250;
 
 SELECT MAX(listID) FROM watchList;
 
+Insert into watchList values(%s, %s, %s, %s, %s)
+
+Insert into listedStock values(%s, %s)
+
 delete from watchList WHERE listID = %s;
 
-delete from listedStock WHERE listID = %s
+delete from listedStock WHERE listID = %s;
 
-delete from listedStock WHERE stockID = %s
+delete from listedStock WHERE stockID = %s;
 
 Transaction:
 
@@ -41,6 +49,8 @@ select transactionID, stockID, stockAmount, stockValue from userTransaction WHER
 SELECT `stockID` FROM stock LIMIT 100;
 
 SELECT MAX(transactionID) FROM userTransaction;
+
+INSERT INTO userTransaction (transactionID, stockID, stockAmount, stockValue, userAccountID, type) VALUES (%s, %s, %s, %s, %s, %s)
 
 DELETE FROM userTransaction WHERE userAccountID = %s AND transactionID = %s;
 
@@ -57,6 +67,8 @@ SELECT friendAccountID, firstName, LastName FROM userFriends JOIN user ON friend
 select u.emailID from user u where u.emailID not in (select friendAccountID from userFriends where userAccountID = %s) and u.emailID <> %s
 
 select friendAccountID from userFriends where userAccountID = %s;
+
+INSERT INTO userFriends VALUES(%s, %s);
 
 DELETE FROM userFriends WHERE userAccountID = %s AND friendAccountID = %s;
 
