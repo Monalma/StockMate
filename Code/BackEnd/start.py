@@ -177,31 +177,31 @@ def stocks(a):
       </label>
     </ul>
   </div><br></br>"""
-   # table += """<h1 class=\"stock_text\">Trending Stocks</h1><br></br>"""
-   # cursor.execute("SELECT * FROM stock ORDER BY Price LIMIT 0 , 30")
+   table += """<h1 class=\"stock_text\">Trending Stocks</h1><br></br>"""
+   cursor.execute("SELECT * FROM stock ORDER BY Price LIMIT 0 , 30")
 
-   # allInfo = cursor.fetchall()
+   allInfo = cursor.fetchall()
 
-   # for i in allInfo:
-   #    print(i)
+   for i in allInfo:
+      print(i)
 
-   # table += "<table id=\"customers\">"
-   # table += " <tr> <th> Stock ID </th> <th> Price </th>  <th> Company</th> <th> Trade</th><th> Last Updated</th></th>"
-   # for i in allInfo:
-   #    stock_id = i[0]
-   #    stock_price = i[1]
-   #    company = i[2]
-   #    trade = i[3]
-   #    last_updated = i[4]
-   #    table += " <tr> <td>" + str(stock_id) + " </td> <td>" +str(stock_price)+"</td> <td>" +str(company)+ "</td> <td>" +str(trade)+ "</td> <td>" + str(last_updated) +"</td> </tr>"
+   table += "<table id=\"customers\">"
+   table += " <tr> <th> Stock ID </th> <th> Company</th> <th> Trade</th><th> Last Updated</th></th>"
+   for i in allInfo:
+      stock_id = i[0]
+      stock_price = i[1]
+      company = i[2]
+      trade = i[3]
+      last_updated = i[4]
+      table += " <tr> <td>" + str(stock_id) + " </td> <td>" +str(company)+ "</td> <td>" +str(trade)+ "</td> <td>" + str(last_updated) +"</td> </tr>"
 
 
 
-   # table += "</table>"
+   table += "</table>"
    table += """<h1 class=\"stock_text\">Stock Statistics</h1><br></br>"""
-   table += " <tr> <th> Stock ID </th> <th> Weekly Change </th>  <th> Monthly Change</th> <th> Yearly Change </th><th> All Time Change</th></tr>"
+   table += "<table id=\"customers\"> <tr> <th> Stock ID </th> <th> Daily Change </th> <th> Weekly Change </th>  <th> Monthly Change</th> <th> Yearly Change </th><th> All Time Change</th></tr>"
 
-   companyQuery = "SELECT stockID FROM HistoricalData GROUP BY stockID;"
+   companyQuery = "SELECT stockID FROM HistoricalData GROUP BY stockID HAVING stockID <> \"MSFT\";"
    cursor.execute(companyQuery)
    stockInfo = []
 
@@ -212,9 +212,10 @@ def stocks(a):
       result_args = cursor.callproc('GetPrevDayPercent', args)
       stockInfo.append([result_args[0], result_args[1], result_args[2], result_args[3], result_args[4], result_args[5]])
       print(result_args)
-   
-   
-   table += """<h1 class=\"stock_text\">Trending Stocks</h1><br></br>"""
+      table += "<tr> <td>" + result_args[0] + "</td><td>" + result_args[1] + "%</td><td>" + result_args[2]+ "%</td><td>" + result_args[3]+ "%</td><td>" + result_args[4] + "%</td><td>" + result_args[5] + "%</td></tr>"
+
+   table += "</table>"
+   # table += """<h1 class=\"stock_text\">Trending Stocks</h1><br></br>"""
 
 
    table += "</body> </html>"

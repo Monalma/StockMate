@@ -93,7 +93,6 @@ BEGIN
   DECLARE prevYearPrice FLOAT;
   DECLARE prevAllDate DATE;
   DECLARE prevAllPrice FLOAT;
-	DECLARE companyList cursor for SELECT stockID FROM HistoricalData GROUP BY stockID;
   DECLARE prevDayPercentage FLOAT;
   DECLARE prevWeekPercentage FLOAT;
   DECLARE prevMonthPercentage FLOAT;
@@ -130,11 +129,11 @@ BEGIN
 
   set prevAllPercentage = (currPrice - prevAllPrice)/(prevAllPrice) * 100;
 
-  SELECT CAST(prevDayPercentage AS VARCHAR(50)) INTO SprevDayPercentage;
-  SELECT CAST(prevDayPercentage AS VARCHAR(50)) INTO SprevWeekPercentage;
-  SELECT CAST(prevDayPercentage AS VARCHAR(50)) INTO SprevMonthPercentage;
-  SELECT CAST(prevDayPercentage AS VARCHAR(50)) INTO SprevYearPercentage;
-  SELECT CAST(prevDayPercentage AS VARCHAR(50)) INTO SprevAllPercentage;
+  SELECT CAST(prevDayPercentage AS CHAR(50)) INTO SprevDayPercentage;
+  SELECT CAST(prevWeekPercentage AS CHAR(50)) INTO SprevWeekPercentage;
+  SELECT CAST(prevMonthPercentage AS CHAR(50)) INTO SprevMonthPercentage;
+  SELECT CAST(prevYearPercentage AS CHAR(50)) INTO SprevYearPercentage;
+  SELECT CAST(prevAllPercentage AS CHAR(50)) INTO SprevAllPercentage;
 
 END //
 DELIMITER ;
