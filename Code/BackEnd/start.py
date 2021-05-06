@@ -8,6 +8,7 @@ from flask import Flask, request, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask,render_template,request,redirect,flash
 import mysql.connector
+import numpy
 
 import connection_info
 app = Flask(__name__)
@@ -202,20 +203,17 @@ def stocks(a):
 
    companyQuery = "SELECT stockID FROM HistoricalData GROUP BY stockID;"
    cursor.execute(companyQuery)
-   bestDaily = 0
-   bestDailyStock = ""
-   bestWeekly = 0
-   bestWeeklyStock = ""
-   bestMont = 0
-   bestYearly = 0
-   bestAlltime = 0
+   stockInfo = []
 
    companyResult = cursor.fetchall()
    for i in companyResult:
       stockName = i[0]
       args = (stockName, (0, 'CHAR'), (0, 'CHAR'), (0, 'CHAR'), (0, 'CHAR'), (0, 'CHAR'))
       result_args = cursor.callproc('GetPrevDayPercent', args)
+      stockInfo.append([result_args[0], result_args[1], result_args[2], result_args[3], result_args[4], result_args[5]])
       print(result_args)
+   
+   
    table += """<h1 class=\"stock_text\">Trending Stocks</h1><br></br>"""
 
 
